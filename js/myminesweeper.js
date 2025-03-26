@@ -1,8 +1,8 @@
 //import "./game/myminesweeper_masin.js"
 let dx=100
-let Nx=5
-let Ny=5
-let Nm=20
+let Nx=8
+let Ny=8
+let Nm=30
 
 const canvas = document.getElementById("mygamecanvas");
 

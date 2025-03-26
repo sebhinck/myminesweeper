@@ -2,39 +2,58 @@
 class myMinesweeper {
 
   constructor (dx, Nx, Ny, Nm, canvas) {
-    this.canvas=canvas
+    this.canvas=canvas;
+    this.headerheight = 50;
+    this.left=0;
     this.game_reset(dx, Nx, Ny, Nm);
+    this.canvasLeft = this.canvas.offsetLeft + this.canvas.clientLeft;
+    this.canvasTop  = this.canvas.offsetTop  + this.canvas.clientTop;
 
-    console.log(this.Cells);
+    this.canvas.addEventListener("click", this.clickFunction.bind(this));
+    this.canvas.addEventListener("contextmenu", this.clickFunction, false);
   }
 
   game_reset (dx, Nx, Ny, Nm) {
-    this.grid = new Grid(Nx, Ny);
+    this.grid = new Grid(Nx, Ny, canvas, dx, this.headerheight);
+    console.log(this.headerheight)
     this.Nm=Nm;
+    this.dx=dx;
 
     if (this.grid.N <= this.Nm) {
       throw new Error("Error! More Mines than Cells requested!");
     }
 
-    this.lx=dx*this.grid.Nx
-    this.ly=dx*this.grid.Ny
+    this.lx=dx*this.grid.Nx + this.left;
+    this.ly=dx*this.grid.Ny + this.headerheight;
 
     this.canvas.width=this.lx
     this.canvas.height=this.ly
 
-    this.Cells=[]
-
     let indMines = this.getMinesInd();
     console.log(indMines)
 
-    for (let y=0; y<Ny; y++) {
-      for (let x=0; x<Nx; x++) {
-        let i=this.grid.idx2ind(x,y);
-        let isMine=indMines.includes(i);
-        let [_x, _y] = this.grid.ind2idx(i);
-        this.Cells.push(new Cell(_x, _y, i, isMine));
-      }
+    this.grid.initCells(indMines);
+
+    this.grid.draw();
+  }
+
+  clickFunction(event) {
+    console.log(this)
+    console.log(this.grid)
+
+    console.log(event);
+
+    var x = event.pageX - this.canvasLeft,
+        y = event.pageY - this.canvasTop; 
+
+    if (event.type=="contextmenu") {
+      event.preventDefault();
+      // this.grid.rightclick(event.x, event.y);
+    } else {
+      this.grid.leftclick(x, y);
     }
+
+    return(false);
   }
 
   getMinesInd() {
@@ -49,21 +68,7 @@ class myMinesweeper {
       }
     }
 
-    //return(b.sort(function(a, b) {return (a - b);}));
     return(b.sort((a, b) => (a - b)));
-  }
-
-  getMinesInd2() {
-    let a = Array.from(Array(this.Nm).keys());
-    let b = []
-    for (let i=0; i<this.Nm; i++) {
-      let rand_ind = Math.round(Math.random() * (this.Nm - i) - 0.5);
-      //console.log(rand_ind)
-      console.log(a.length)
-      b.push(a[rand_ind]);
-      delete a[rand_ind]
-    }
-    return(b)
   }
 
 }
