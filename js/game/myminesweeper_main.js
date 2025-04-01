@@ -61,7 +61,8 @@ class myMinesweeper {
     this.grid.drawMines();
 
     //window.open(wonurl, '_blank').focus();
-    document.getElementById('my_youtube').src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=njqv8kJxVOG2LnU9?autoplay=1'
+    console.log(player)
+    player.startVideo()
     document.getElementById('myytdiv').style.display='block'
   }
 
