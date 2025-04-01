@@ -60,18 +60,9 @@ class myMinesweeper {
     rscontent.style.display='none';
     this.grid.drawMines();
 
-    //window.open(wonurl, '_blank').focus();
-    //document.getElementById("myytdiv").style.display='block'
-    console.log(player)
     let ytdiv = document.getElementById("myytdiv");
     ytdiv.style.display='block';
     player.playVideo();
-    console.log(iframe)
-
-    var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
-    if (requestFullScreen) {
-      requestFullScreen.bind(iframe)();
-    }
   }
 
   game_reset (dx, Nx, Ny, Nm) {
