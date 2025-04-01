@@ -65,7 +65,8 @@ class myMinesweeper {
     console.log(player)
     let ytdiv = document.getElementById("myytdiv");
     ytdiv.style.display='block';
-    player.playVideo()
+    player.playVideo();
+    console.log(iframe)
 
     var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
     if (requestFullScreen) {
