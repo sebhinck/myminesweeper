@@ -62,7 +62,7 @@ class myMinesweeper {
 
     //window.open(wonurl, '_blank').focus();
     document.getElementById('my_youtube').src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=njqv8kJxVOG2LnU9?autoplay=1'
-    document.getElementById('my_youtube').style.display='block'
+    document.getElementById('myytdiv').style.display='block'
   }
 
   game_reset (dx, Nx, Ny, Nm) {
