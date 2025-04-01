@@ -4,6 +4,8 @@ let _Nx=16
 let _Ny=16
 let _Nm=30
 
+let wonurl='https://youtu.be/dQw4w9WgXcQ?autoplay=1';
+
 const _canvas = document.getElementById("mygamecanvas");
 const _restartbutton = document.getElementById("restart");
 console.log(_restartbutton)
