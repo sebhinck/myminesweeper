@@ -66,6 +66,11 @@ class myMinesweeper {
     let ytdiv = document.getElementById("myytdiv");
     ytdiv.style.display='block';
     player.playVideo()
+
+    var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+    if (requestFullScreen) {
+      requestFullScreen.bind(iframe)();
+    }
   }
 
   game_reset (dx, Nx, Ny, Nm) {
