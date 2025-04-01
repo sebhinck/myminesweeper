@@ -65,7 +65,7 @@ class myMinesweeper {
     console.log(player)
     let ytdiv = document.getElementById("myytdiv");
     ytdiv.style.display='block';
-    player.startVideo()
+    player.playVideo()
   }
 
   game_reset (dx, Nx, Ny, Nm) {
