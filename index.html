@@ -2,7 +2,54 @@
   <head>
   </head>
   <body>
-    <canvas id="mygamecanvas"></canvas>
+    <style>
+      #restartoverlay {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+      }
+
+      #container {
+        position: relative;
+        left: 30;
+      }
+      #container canvas, #restartoverlay {
+        position: absolute;
+      }
+      canvas {
+        border: 1px solid black;
+        z-index: 1;
+      }
+      #rscontainer {
+        position: absolute;
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 10px;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+    </style>
+
+    <div id="container">
+      <canvas id="mygamecanvas"></canvas>
+      <div id="restartoverlay">
+        <div id="rscontainer">
+          Test
+          <button id="restart">Restart</button>
+        </div>
+      </div>
+    </div>
+
     <script src="js/game/myminesweeper_main.js"></script>
     <script src="js/game/Grid.js"></script>
     <script src="js/game/Cells.js"></script>

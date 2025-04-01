@@ -1,12 +1,24 @@
 //import "./game/myminesweeper_masin.js"
-let dx=100
-let Nx=8
-let Ny=8
-let Nm=30
+let _dx=50
+let _Nx=16
+let _Ny=16
+let _Nm=30
 
-const canvas = document.getElementById("mygamecanvas");
+const _canvas = document.getElementById("mygamecanvas");
+const _restartbutton = document.getElementById("restart");
+console.log(_restartbutton)
 
-game = new myMinesweeper(dx, Nx, Ny, Nm, canvas)
+let debug = false;
+//debug = true;
+game = new myMinesweeper(_dx, _Nx, _Ny, _Nm, _canvas)
+game.Init();
+
+_restartbutton.addEventListener('click', e => {
+    game.unbind();
+    game = new myMinesweeper(_dx, 10, 10,5, _canvas) ; // instantiate a new game object to reset values
+    game.start();
+    //e.target.style.display = 'none';
+});
 
 //console.log(game)
 
