@@ -10,6 +10,8 @@ class myMinesweeper {
     this.bottom=20;
     this.linewidth=2;
 
+    this.timer=new Timer(document.getElementById("myTimer"), 500);
+
     this.game_reset(dx, Nx, Ny, Nm);
     let rect = this.canvas.getBoundingClientRect();
     this.canvasLeft = rect.left;
@@ -26,16 +28,23 @@ class myMinesweeper {
     });
   }
 
-  Init() {
+  showMenu() {
     let restartoverlay = document.getElementById("restartoverlay");
     restartoverlay.style.display='block';
     let rscontent = document.getElementById("rscontainer");
     rscontent.style.display='block';
   }
 
-  start() {
+  hideMenu() {
     let restartoverlay = document.getElementById("restartoverlay");
     restartoverlay.style.display='none';
+    let rscontent = document.getElementById("rscontainer");
+    rscontent.style.display='none';
+  }
+
+  start() {
+    this.hideMenu();
+    this.timer.startTimer();
   }
 
   unbind() {
@@ -45,6 +54,7 @@ class myMinesweeper {
 
   game_over() {
     console.log("Game Over!");
+    this.timer.stopTimer();
     let restartoverlay = document.getElementById("restartoverlay");
     restartoverlay.style.display='block';
     let rscontent = document.getElementById("rscontainer");
@@ -54,6 +64,7 @@ class myMinesweeper {
 
   game_won() {
     console.log("Game won!");
+    this.timer.stopTimer();
     let restartoverlay = document.getElementById("restartoverlay");
     restartoverlay.style.display='block';
     let rscontent = document.getElementById("rscontainer");
@@ -91,6 +102,13 @@ class myMinesweeper {
     restartoverlay.style.display='none';
     restartoverlay.style.display='block';
 
+
+    let container = document.getElementById("container");
+    container.style.width= this.lx;
+    let timerdiv = document.getElementById("myTimer");
+    timerdiv.style.right = this.right;
+    timerdiv.style.top = this.bottom;
+
     this.drawGame();
   }
 
@@ -115,6 +133,7 @@ class myMinesweeper {
             this.game_reset(this.grid.dx, this.grid.Nx, this.grid.Ny, this.Nm);
           }
           this.firstClick = false;
+          console.log("first")
           this.start();
         }
 

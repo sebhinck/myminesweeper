@@ -11,12 +11,12 @@ console.log(_restartbutton)
 let debug = false;
 //debug = true;
 game = new myMinesweeper(_dx, _Nx, _Ny, _Nm, _canvas)
-game.Init();
+game.showMenu();
 
 _restartbutton.addEventListener('click', e => {
     game.unbind();
     game = new myMinesweeper(_dx, 10, 10,5, _canvas) ; // instantiate a new game object to reset values
-    game.start();
+    game.hideMenu();
     //e.target.style.display = 'none';
 });
 
