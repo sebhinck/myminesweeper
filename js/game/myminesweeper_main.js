@@ -155,7 +155,7 @@ class myMinesweeper {
 
   drawGame() {
     let ctx = this.canvas.getContext("2d");
-    ctx.fillStyle = "lightgrey";
+    ctx.fillStyle = "darkgoldenrod"; //"lightgrey";
     ctx.fillRect(0, 0, this.lx, this.ly);
 
     this.grid.draw();

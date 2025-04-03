@@ -14,11 +14,30 @@ game = new myMinesweeper(_dx, _Nx, _Ny, _Nm, _canvas)
 game.showMenu();
 
 _restartbutton.addEventListener('click', e => {
-    game.unbind();
-    game = new myMinesweeper(_dx, 10, 10,5, _canvas) ; // instantiate a new game object to reset values
-    game.hideMenu();
-    //e.target.style.display = 'none';
+  game.unbind();
+  [Nx, Ny, Nm] = readRestartForm();
+  game = new myMinesweeper(_dx, Nx, Ny, Nm, _canvas) ; // instantiate a new game object to reset values
+  game.hideMenu();
 });
 
-//console.log(game)
+const form = document.getElementById("restartForm");
+form.addEventListener('input', e => {
+  [Nx, Ny, Nm] = readRestartForm();
+  let N  = Nx * Ny;
+  document.getElementById("restartOut").innerHTML="("+Nx+"x"+Ny+") => "+ N+ " cells => "+ Nm + " mines.."
+});
 
+var event = new Event('input');
+form.dispatchEvent(event);
+
+
+function readRestartForm() {
+  //const _form = document.getElementById("restartForm");
+  const __Nx = document.getElementById("Nx").value;
+  const __Ny = document.getElementById("Ny").value;
+  const __fMines = document.getElementById("fracMines").value;
+  //console.log(__Nx)
+  let __N  = __Nx * __Ny,
+      __Nm = Math.floor(__N * __fMines);
+  return [__Nx, __Ny, __Nm]
+}

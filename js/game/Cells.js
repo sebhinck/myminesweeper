@@ -30,8 +30,8 @@ class Cell {
 
   draw () {
     let unclickedCol = "green",
-        mineCol = "darkgreen",
-        //mineCol = "green",
+        //mineCol = "darkgreen",
+        mineCol = "green",
         mineExplodedCol = "red",
         clickedCol = "white";
     //this.CellsnMines=0;
