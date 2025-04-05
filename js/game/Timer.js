@@ -40,7 +40,20 @@ format_time(t) {
   t_secs -= m * 60;
   let s = t_secs;
 
-  return( h.toString().padStart(2, '0') + ":" + m.toString().padStart(2, '0') + ":" + s.toString().padStart(2, '0'))
+  let out = "";
+  if (h > 0) {
+    out += h.toString().padStart(2, '0') + ":";
+  }
+
+  //if ((m > 9) || (h > 0)) {
+  out += m.toString().padStart(2, '0');
+  //} else {
+    //out += m.toString();
+  //}
+
+  out += ":" + s.toString().padStart(2, '0');
+
+  return( out.padStart(8, ' ') )
 }
 
 }

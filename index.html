@@ -67,15 +67,22 @@
         background-color: olivedrab;
         color: white;
       }
-      #myTimer {
-        position:absolute;
-        width:100;
+      #myTimerContainer {
+        position: absolute;
+        right: 20;
+        top: 20;
+       /* width:100;*/
         z-index:5;
         text-align:right;
         background-color: black;
         color: wheat;
         border-radius: 15px;
-        padding: 8;
+        padding: 12;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-family: monospace, monospace;
+        white-space:pre;
       }
 
 
@@ -117,7 +124,9 @@
           <button id="restart">Start</button>
         </div>
       </div>
-      <div id='myTimer'></div>
+      <div id="myTimerContainer">
+        <div id='myTimer'></div>
+      </div>
     </div>
 
     <script src="js/game/myminesweeper_main.js"></script>
