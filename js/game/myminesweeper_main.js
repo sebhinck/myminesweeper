@@ -105,9 +105,15 @@ class myMinesweeper {
 
     let container = document.getElementById("container");
     container.style.width= this.lx;
-    let timerdiv = document.getElementById("myTimer");
-    timerdiv.style.right = this.right;
-    timerdiv.style.top = this.bottom;
+    let headerdiv = document.getElementById("headerContainer");
+    headerdiv.style.width = this.grid.dx*this.grid.Nx + this.linewidth;
+    headerdiv.style.height = this.headerheight - 2* this.bottom;
+    headerdiv.style.marginLeft = this.left;
+    headerdiv.style.marginRight = this.right;
+    headerdiv.style.marginTop = this.bottom;
+    //let timerdiv = document.getElementById("myTimer");
+    //timerdiv.style.right = this.right;
+    //timerdiv.style.top = this.bottom;
 
     this.drawGame();
   }
