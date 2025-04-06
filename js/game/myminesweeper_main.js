@@ -114,6 +114,8 @@ class myMinesweeper {
     //let timerdiv = document.getElementById("myTimer");
     //timerdiv.style.right = this.right;
     //timerdiv.style.top = this.bottom;
+    let NminesDiv = document.getElementById("NminesDiv");
+    NminesDiv.innerHTML = "N:" + this.Nm;
 
     this.drawGame();
   }

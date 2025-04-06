@@ -68,7 +68,10 @@
         color: white;
       }
       #myTimer {
-        order: 3;
+        position: absolute;
+        right:0;
+        top: 50%;
+        transform: translate(0, -50%);
         padding: 7;
         height: fit-content;
         width: fit-content;
@@ -76,11 +79,7 @@
         background: black;
         color: white;
         font-family: monospace, monospace;
-        position: absolute;
-        right:0;
-        top: 50%;
-        transform: translate(0, -50%);
-        z-index: 6;
+        z-index: 2;
       }
       #headerContainer {
         position: absolute;
@@ -88,13 +87,18 @@
         left: 0;
         height: 40;
       }
-      #itemleft {
+      #NminesDiv {
         position: absolute;
         left: 0;
         top: 50%;
         transform: translate(0, -50%);
-        width: 50;
-        height: 50;
+        padding: 7;
+        height: fit-content;
+        width: fit-content;
+        border-radius: 10px;
+        background: black;
+        color: white;
+        font-family: monospace, monospace;
         z-index: 2;
       }
       #itemcenter {
@@ -149,10 +153,10 @@
       </div>
       <div id="headerContainer">
         <div id="myTimer">
- 0:00:00
+          0:00:00
         </div>
         <div id="itemcenter"> </div>
-        <div id="itemleft"> </div>
+        <div id="NminesDiv"> </div>
       </div>
     </div>
 
