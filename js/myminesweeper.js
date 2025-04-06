@@ -6,7 +6,7 @@ let _Nm=30
 
 const _canvas = document.getElementById("mygamecanvas");
 const _restartbutton = document.getElementById("restart");
-console.log(_restartbutton)
+const _smileybutton = document.getElementById("SmileyButton");
 
 let debug = false;
 //debug = true;
@@ -19,6 +19,8 @@ _restartbutton.addEventListener('click', e => {
   game = new myMinesweeper(_dx, Nx, Ny, Nm, _canvas) ; // instantiate a new game object to reset values
   game.hideMenu();
 });
+
+_smileybutton.addEventListener("click", game.showMenu);
 
 const form = document.getElementById("restartForm");
 form.addEventListener('input', e => {

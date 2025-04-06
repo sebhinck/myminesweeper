@@ -59,6 +59,8 @@ class myMinesweeper {
     restartoverlay.style.display='block';
     let rscontent = document.getElementById("rscontainer");
     rscontent.style.display='none';
+    const _smileybutton = document.getElementById("SmileyButton");
+    _smileybutton.innerHTML = "😵";
     this.grid.drawMines();
   }
 
@@ -69,6 +71,8 @@ class myMinesweeper {
     restartoverlay.style.display='block';
     let rscontent = document.getElementById("rscontainer");
     rscontent.style.display='none';
+    const _smileybutton = document.getElementById("SmileyButton");
+    _smileybutton.innerHTML = "🤩";
     this.grid.drawMines();
 
   }
@@ -116,6 +120,9 @@ class myMinesweeper {
     //timerdiv.style.top = this.bottom;
     let NminesDiv = document.getElementById("NminesDiv");
     NminesDiv.innerHTML = "N:" + this.Nm;
+
+    const _smileybutton = document.getElementById("SmileyButton");
+    _smileybutton.innerHTML = "🙂";
 
     this.drawGame();
   }
