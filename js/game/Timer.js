@@ -33,7 +33,7 @@ update() {
 }
 
 format_time(t) {
-  let t_secs = Math.floor(t/1000) + 3595;
+  let t_secs = Math.floor(t/1000);
   let h = Math.floor(t_secs / 3600);
   t_secs -= h * 3600;
   let m = Math.floor(t_secs / 60);
