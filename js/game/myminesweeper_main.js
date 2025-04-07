@@ -120,7 +120,7 @@ class myMinesweeper {
     //timerdiv.style.right = this.right;
     //timerdiv.style.top = this.bottom;
     let NminesDiv = document.getElementById("NminesDiv");
-    NminesDiv.innerHTML = "N:" + this.Nm;
+    NminesDiv.innerHTML = "💣 " + this.Nm ;
 
     const _smileybutton = document.getElementById("SmileyButton");
     _smileybutton.innerHTML = "🙂";
