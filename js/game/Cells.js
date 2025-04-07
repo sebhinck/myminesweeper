@@ -24,6 +24,7 @@ class Cell {
         clickresult = 1;
       }
       this.clicked = true;
+      this.marked = false;
       this.draw();
     }
     return (clickresult)
@@ -79,6 +80,7 @@ class Cell {
     }
 
     let textcol = "black";
+    let fontsize=Math.round(this.dx * 0.9)
     if (this.clicked) {
       if ((this.nMines > 0) && (! this.isMine)) {
         switch (this.nMines) {
@@ -113,10 +115,10 @@ class Cell {
       }
     } else if (this.marked) {
       textcol = "red";
-      text += "?";
+      text += "🚩";
+      fontsize=Math.round(this.dx * 0.7)
     }
 
-    let fontsize=Math.round(this.dx * 0.9)
 
     this.drawtext(text, textcol, fontsize+"px bolder arial");
     if (debug) {
@@ -155,11 +157,14 @@ class Cell {
 
   drawMine() {
     if (this.isMine) {
-      let col = 'red';
+      //let col = 'red';
+      let symb = '💣';
       if (this.clicked) {
-        col = 'black';
+        symb = '💥';
       }
-      this.drawcircle(col);
+      let fontsize=Math.round(this.dx * 0.6);
+
+      this.drawtext(symb, 'black', fontsize+"px  bolder arial");
     }
   }
 
