@@ -38,7 +38,7 @@ class Cell {
 
   draw () {
     let unclickedCol = "green",
-        //mineCol = "darkgreen",
+        //mineCol = "orange",
         mineCol = "green",
         mineExplodedCol = "red",
         clickedCol = "white",
@@ -83,28 +83,28 @@ class Cell {
       if ((this.nMines > 0) && (! this.isMine)) {
         switch (this.nMines) {
           case 1:
-            textcol='blue';
+            textcol='DodgerBlue';
             break;
           case 2:
-            textcol='green';
+            textcol='ForestGreen';
             break;
           case 3:
-            textcol='gold';
-            break;
-          case 4:
-            textcol='purple';
-            break;
-          case 5:
             textcol='red';
             break;
+          case 4:
+            textcol='navy';
+            break;
+          case 5:
+            textcol='Maroon';
+            break;
           case 6:
-            textcol='darkred';
+            textcol='Teal';
             break;
           case 7:
-            textcol='pink';
+            textcol='purple';
             break;
           case 8:
-            textcol='black';
+            textcol='slategrey';
             break;
           default:
             textcol='black';
