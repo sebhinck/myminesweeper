@@ -2,7 +2,7 @@
 let _dx=50
 let _Nx=16
 let _Ny=16
-let _Nm=30
+let _Nm=0
 
 const _canvas = document.getElementById("mygamecanvas");
 const _restartbutton = document.getElementById("restart");
@@ -34,11 +34,9 @@ form.dispatchEvent(event);
 
 
 function readRestartForm() {
-  //const _form = document.getElementById("restartForm");
   const __Nx = document.getElementById("Nx").value;
   const __Ny = document.getElementById("Ny").value;
   const __fMines = document.getElementById("fracMines").value;
-  //console.log(__Nx)
   let __N  = __Nx * __Ny,
       __Nm = Math.floor(__N * __fMines);
   return [__Nx, __Ny, __Nm]

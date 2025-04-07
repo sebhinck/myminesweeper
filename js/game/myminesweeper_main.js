@@ -48,6 +48,7 @@ class myMinesweeper {
   }
 
   unbind() {
+    this.timer.stopTimer();
     this.canvas.removeEventListener('click', this.boundClickFunction);
     this.canvas.removeEventListener('contextmenu', this.boundClickFunction);
   }
@@ -139,33 +140,37 @@ class myMinesweeper {
 
       if (event.type=="contextmenu") {
         event.preventDefault();
-        // this.grid.rightclick(event.x, event.y);
-        console.log("rclick", this)
+        if (!this.firstClick) {
+          this.grid.rightclick(x, y);
+        } else {
+          this.leftClick(x, y);
+        }
       } else {
-
-        if (this.firstClick) {
-          while (this.grid.checkclick(x, y)) {
-            this.game_reset(this.grid.dx, this.grid.Nx, this.grid.Ny, this.Nm);
-          }
-          this.firstClick = false;
-          console.log("first")
-          this.start();
-        }
-
-
-        let clickresult = this.grid.leftclick(x, y);
-        if (clickresult == -1) {
-          this.game_over();
-        } else if (clickresult > 0) {
-          this.notMines -= clickresult;
-          if (this.notMines == 0) {
-            this.game_won();
-          }
-        }
+        this.leftClick(x, y);
       }
     }
 
     return(false);
+  }
+
+  leftClick(x, y) {
+    if (this.firstClick) {
+      while (this.grid.checkclick(x, y)) {
+        this.game_reset(this.grid.dx, this.grid.Nx, this.grid.Ny, this.Nm);
+      }
+      this.firstClick = false;
+      this.start();
+    }
+
+    let clickresult = this.grid.leftclick(x, y);
+    if (clickresult == -1) {
+      this.game_over();
+    } else if (clickresult > 0) {
+      this.notMines -= clickresult;
+      if (this.notMines == 0) {
+        this.game_won();
+      }
+    }
   }
 
   drawGame() {

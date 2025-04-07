@@ -11,6 +11,7 @@ class Cell {
     this.dx=dx;
     this.nMines=0;
     this.clicked=false;
+    this.marked=false;
   }
 
   click() {
@@ -28,38 +29,45 @@ class Cell {
     return (clickresult)
   }
 
+  mark() {
+    this.marked = !this.marked;
+
+    this.draw();
+  }
+
+
   draw () {
     let unclickedCol = "green",
         //mineCol = "darkgreen",
         mineCol = "green",
         mineExplodedCol = "red",
-        clickedCol = "white";
-    //this.CellsnMines=0;
-    //let text=this.i+" ("+this.x+","+this.y+") -N:"+this.nMines+"- ";
+        clickedCol = "white",
+        markedCol = unclickedCol;
     let text="";
     let debugtext="";
-    //text=text+this.i//+" ("+this.x+","+this.y+") -N:"+this.nMines+"- ";
-    debugtext=debugtext+" ("+this.x+","+this.y+")"//+ -N:"+this.nMines+"- ";
+    debugtext += " ("+this.x+","+this.y+")";
 
     let bg = "";
 
     if (this.clicked) {
       bg = clickedCol;
     } else {
-      bg = unclickedCol;
+      if (!this.marked) {
+        bg = unclickedCol;
+      } else {
+        bg = markedCol;
+      }
     }
 
     if (this.isMine) {
-      //text = text + " (X)"
       if (this.clicked) {
         bg = mineExplodedCol;
       } else {
         bg = mineCol;
       }
-      debugtext=debugtext+" -M- ";
+      debugtext += " -M- ";
     } else {
-      debugtext=debugtext+" -N:"+this.nMines+"- ";
-      //text = text + " (-)"
+      debugtext += " -N:"+this.nMines+"- ";
     }
 
     this.drawbackground(bg);
@@ -72,7 +80,6 @@ class Cell {
 
     let textcol = "black";
     if (this.clicked) {
-      //textcol="red";
       if ((this.nMines > 0) && (! this.isMine)) {
         switch (this.nMines) {
           case 1:
@@ -102,8 +109,11 @@ class Cell {
           default:
             textcol='black';
         }
-        text = text + this.nMines;
+        text += this.nMines;
       }
+    } else if (this.marked) {
+      textcol = "red";
+      text += "?";
     }
 
     let fontsize=Math.round(this.dx * 0.9)

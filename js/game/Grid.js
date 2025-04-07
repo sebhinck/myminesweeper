@@ -45,7 +45,6 @@ class Grid {
   }
 
   leftclick(x, y) {
-    //console.log("leftclick", x, y, this.xFromCanvas(x), this.yFromCanvas(y), "Nx", this.Nx, "Ny", this.Ny)
     let X = this.xFromCanvas(x),
         Y = this.yFromCanvas(y);
 
@@ -55,6 +54,16 @@ class Grid {
 
     return(clickresult)
 
+  }
+
+  rightclick(x, y) {
+    let X = this.xFromCanvas(x),
+        Y = this.yFromCanvas(y),
+        i = this.idx2ind(X, Y);
+
+    this.Cells[i].mark();
+
+    this.drawGrid();
   }
 
   checkclick(x, y) {

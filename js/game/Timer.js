@@ -12,7 +12,6 @@ startTimer() {
   if (!this.interval) {
     let t=this;
     this.interval = setInterval(function(){t.update();}, this.delay);
-    console.log("start")
   }
 }
 
